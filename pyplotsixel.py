@@ -31,11 +31,11 @@ def convert_line(data):
                     colors_set.add(p)
                     _convert_line(p, x)
             if six != cache:
-                node.append([cache, count])
+                node.append((cache, count))
                 count = 0
                 cache = six
         if cache != 0:
-            node.append([cache, count])
+            node.append((cache, count))
         buf.append((color, node))
 
     _convert_line(data[0, 0], 0)
