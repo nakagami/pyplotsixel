@@ -9,6 +9,5 @@ setup(name="pyplotsixel",
       author="Hajime Nakagami",
       author_email="nakagami@gmail.com",
       license="BSD",
-      keywords=["matplotlib", "sixel", "libsixel"],
-      install_requires=["libsixel-python"],
+      keywords=["matplotlib", "sixel"],
       py_modules=["pyplotsixel"])
