@@ -2,7 +2,7 @@ from setuptools import setup
 
 description = "Matplotlib sixel backend"
 setup(name="pyplotsixel",
-      version="0.1.1",
+      version="0.2.0",
       description=description,
       long_description=open('README.rst').read(),
       url="https://github.com/nakagami/pyplotsixel",
