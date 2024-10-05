@@ -9,7 +9,7 @@ from matplotlib.backend_bases import _Backend, FigureManagerBase
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 
 
-def convert_line(data):
+def _convert_line(data):
     colors = list(set(data.flatten()))
     height, width = np.shape(data)
     buf = []
@@ -57,7 +57,7 @@ def output_sixel(image, output):
     data = np.array(image.getdata())
     data = np.reshape(data, (data.size // width, width))
     for y in range(0, height, 6):
-        for n, node in convert_line(data[y:y+6]):
+        for n, node in _convert_line(data[y:y+6]):
             output.write(f"#{n}\n")
             for six, count in node:
                 if count < 4:
