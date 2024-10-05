@@ -65,7 +65,7 @@ def output_sixel(image, output):
                 if count < 4:
                     output.write(chr(0x3f + six) * count)
                 else:
-                    output.write('!%d%c' % (count, 0x3f + six))
+                    output.write(f'!{count}{chr(0x3f+six)}')
             output.write("$\n")
         output.write("-\n")
 
