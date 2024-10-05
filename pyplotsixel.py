@@ -15,12 +15,13 @@ def _convert_line(data):
     six_list = dict([(color, []) for color in colors])
     buf = []
 
+    six = dict([(color, 0) for color in colors])
     for x in range(width):
-        six = dict([(color, 0) for color in colors])
         for y in range(height):
             six[data[y, x]] |= 1 << y
         for color in colors:
             six_list[color].append(six[color])
+            six[color] = 0
 
     for color in colors:
         start_and_six = [(0, six_list[color][0])]
