@@ -11,18 +11,20 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 
 def _convert_line(data):
     height, width = np.shape(data)
+    colors = list(set(data.flatten()))
+    six_list = dict([(color, []) for color in colors])
     buf = []
-    for color in set(data.flatten()):
-        six_list = []
-        for x in range(width):
-            six = 0
-            for y in range(height):
-                if data[y, x] == color:
-                    six |= 1 << y
-            six_list.append(six)
 
-        start_and_six = [(0, six_list[0])]
-        for i, six in enumerate(six_list[1:], start=1):
+    for x in range(width):
+        six = dict([(color, 0) for color in colors])
+        for y in range(height):
+            six[data[y, x]] |= 1 << y
+        for color in colors:
+            six_list[color].append(six[color])
+
+    for color in colors:
+        start_and_six = [(0, six_list[color][0])]
+        for i, six in enumerate(six_list[color][1:], start=1):
             if start_and_six[-1][1] != six:
                 start_and_six.append((i, six))
 
