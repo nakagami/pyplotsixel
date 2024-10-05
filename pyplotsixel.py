@@ -13,7 +13,6 @@ def _convert_line(data):
     height, width = np.shape(data)
     colors = list(set(data.flatten()))
     six_list = dict([(color, []) for color in colors])
-    buf = []
 
     six = dict([(color, 0) for color in colors])
     for x in range(width):
@@ -23,6 +22,7 @@ def _convert_line(data):
             six_list[color].append(six[color])
             six[color] = 0
 
+    buf = []
     for color in colors:
         start_and_six = [(0, six_list[color][0])]
         for i, six in enumerate(six_list[color][1:], start=1):
