@@ -10,16 +10,15 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 
 
 def _convert_line(data):
-    colors = list(set(data.flatten()))
     height, width = np.shape(data)
     buf = []
-    for color in colors:
+    for color in set(data.flatten()):
         six_list = []
-        bitmap = np.where(data == color, 1, 0)
         for x in range(width):
             six = 0
             for y in range(height):
-                six |= bitmap[y, x] << y
+                if data[y, x] == color:
+                    six |= 1 << y
             six_list.append(six)
 
         start_and_six = [(0, six_list[0])]
