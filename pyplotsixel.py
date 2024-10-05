@@ -10,35 +10,31 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 
 
 def convert_line(data):
-    colors_set = set()
-    buf = []
+    colors = list(set(data.flatten()))
     height, width = np.shape(data)
-
-    def _convert_line(color, next_x):
-        node = []
-        count = 0
-        cache = 0
-        if next_x:
-            node.append((0, next_x))
-        for x in range(next_x, width):
-            count += 1
+    buf = []
+    for color in colors:
+        six_list = []
+        bitmap = np.where(data == color, 1, 0)
+        for x in range(width):
             six = 0
             for y in range(height):
-                p = data[y, x]
-                if p == color:
-                    six |= 1 << y
-                elif p not in colors_set:
-                    colors_set.add(p)
-                    _convert_line(p, x)
-            if six != cache:
-                node.append((cache, count))
-                count = 0
-                cache = six
-        if cache != 0:
-            node.append((cache, count))
-        buf.append((color, node))
+                six |= bitmap[y, x] << y
+            six_list.append(six)
 
-    _convert_line(data[0, 0], 0)
+        start_and_six = [(0, six_list[0])]
+        for i, six in enumerate(six_list[1:], start=1):
+            if start_and_six[-1][1] != six:
+                start_and_six.append((i, six))
+
+        node = []
+        for i, (start, six) in enumerate(start_and_six[:-1]):
+            next_start = start_and_six[i + 1][0]
+            node.append((six, next_start - start))
+        start, six = start_and_six[-1]
+        node.append((six, width - start))
+
+        buf.append((color, node))
 
     return buf
 
