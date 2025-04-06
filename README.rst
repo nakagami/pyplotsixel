@@ -6,6 +6,13 @@ Matplotlib sixel backend.
 
 It can draw matplotlib figures in SIXEL available terminal.
 
+Install
+-----------------
+
+::
+
+   pip install pyplotsixel
+
 
 Example
 -----------------
