@@ -11,6 +11,7 @@ Install
 
 ::
 
+   pip install matplotlib
    pip install pyplotsixel
 
 
@@ -29,5 +30,5 @@ Example
    x = np.linspace(0, 1)
    y = x**2
    plt.plot(x, y)
-   plt.show()
+   plt.show();
 
