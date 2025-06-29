@@ -37,7 +37,7 @@ Add a `matplotlib.use()` line as follows.
 Configuration
 -----------------
 
-In the `matplotlibrc <https://matplotlib.org/1.4.1/users/customizing.html>`_ ,
+In the `matplotlibrc <https://matplotlib.org/stable/users/explain/customizing.html#the-matplotlibrc-file>`_ ,
 if you wrote backend configuration
 ::
 
