@@ -32,3 +32,9 @@ Example
    plt.plot(x, y)
    plt.show();
 
+Configuration
+-----------------
+
+By writing `backend: module://pyplotsixel` in the
+`matplotlibrc <https://matplotlib.org/1.4.1/users/customizing.html>`_ ,
+you can omit writing, `matplotlib.use('module://pyplotsixel')`.
