@@ -18,6 +18,8 @@ Install
 Example
 -----------------
 
+Add a `matplotlib.use()` line as follows.
+
 ::
 
    import matplotlib
@@ -35,6 +37,10 @@ Example
 Configuration
 -----------------
 
-By writing `backend: module://pyplotsixel` in the
-`matplotlibrc <https://matplotlib.org/1.4.1/users/customizing.html>`_ ,
-you can omit writing, `matplotlib.use('module://pyplotsixel')`.
+In the `matplotlibrc <https://matplotlib.org/1.4.1/users/customizing.html>`_ ,
+if you wrote backend configuration
+::
+
+   backend: module://pyplotsixel
+
+you can omit additional `matplotlib.use()` line.
