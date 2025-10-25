@@ -34,6 +34,8 @@ Add a `matplotlib.use()` line as follows.
    plt.plot(x, y)
    plt.show();
 
+.. image :: https://github.com/nakagami/pyplotsixel/raw/master/screenshot.png
+
 Configuration
 -----------------
 
